@@ -4,7 +4,7 @@ const CampoTexto = (props) => {
     const placehlderModificado = `${props.placeholder}...` /*Puede ser util para modificar los props sin hacer cambios en muchos lados*/
     return <div className="campo-texto">
         <label>{props.titulo}</label>
-        <input placeholder={placehlderModificado}  />
+        <input placeholder={placehlderModificado} required={props.required}/>
     </div>
 }
 
