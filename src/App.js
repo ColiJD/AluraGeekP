@@ -6,9 +6,17 @@ import MiOrg from './componentes/miOrg';
 import Equipo from './componentes/equipo';
 
 function App() {
-  const [mostrarFormulario, actualizarMostrar] = useState(false)
+  const [mostrarFormulario, actualizarMostrar] = useState(false);
+  const [colaboradores, actualizarColaboradores] = useState([]);
+
   const cambiarMostrar = () => {
     actualizarMostrar(!mostrarFormulario);
+  }
+
+  //Registrar colaborador
+  const registrarColaborador = (colaborador) => {
+    //Spread operator //Esto crea una copia los tres puntos
+    actualizarColaboradores([...colaboradores, colaborador]) 
   }
 
   const equipos = [
@@ -33,7 +41,7 @@ function App() {
       colorSecundario: "#FDE7E8"
     },
     {
-      titulo: "UX y Diseño<",
+      titulo: "UX y Diseño",
       colorPrimario: "#DB6EBF",
       colorSecundario: "#FAE9F5"
     },
@@ -54,11 +62,14 @@ function App() {
   return (
     <div>
       <Header></Header>
-      {mostrarFormulario === true ? <Formulario equipos={equipos.map((equipo)=> equipo.titulo)}/> : <></>}
+      {mostrarFormulario === true ? <Formulario equipos={equipos.map((equipo) => equipo.titulo)}
+        registrarColaborador={registrarColaborador}
+      /> : <></>}
       <MiOrg cambiarMostrar={cambiarMostrar} />
       {
         equipos.map((equipo) => {
-          return <Equipo datos={equipo} key={equipo.titulo}/>
+          return <Equipo datos={equipo} key={equipo.titulo}
+          colaboradores= {colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo )} />
         })
       }
     </div>

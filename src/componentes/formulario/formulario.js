@@ -4,21 +4,25 @@ import CampoTexto from "../campoTexto/campoTexto"
 import ListaOpciones from "../listaOpciones"
 import Boton from "../boton"
 
+
 const Formulario = (props) => {
     const [nombre, setNombre] = useState("")
     const [puesto, setPuesto] = useState("")
     const [foto, setFoto] = useState("")
     const [equipo, setEquipo] = useState("")
 
+    //Destructurar codigo
+    const {registrarColaborador} = props
+
     const manejarEnvio = (evento) => {
         evento.preventDefault()
-        let datos = {
+        let datosaEnviar= {
             nombre,
             puesto,
             foto,
             equipo
         }
-        console.log(datos)
+        registrarColaborador(datosaEnviar)
     };
     return <section className="formulario">
         <form onSubmit={manejarEnvio}>
