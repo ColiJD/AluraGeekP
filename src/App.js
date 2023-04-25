@@ -4,6 +4,7 @@ import Header from './componentes/header/header';
 import Formulario from './componentes/formulario/formulario';
 import MiOrg from './componentes/miOrg';
 import Equipo from './componentes/equipo';
+import Footer from './footer';
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);
@@ -72,6 +73,7 @@ function App() {
           colaboradores= {colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo )} />
         })
       }
+      <Footer></Footer>
     </div>
   );
 }
