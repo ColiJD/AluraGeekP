@@ -12,8 +12,23 @@
     padding-bottom: 24px;
     border-bottom: 4px solid #6278F7;
 }
-.orgSection img{
+
+.orgSection img {
     position: absolute;
     right: 18%;
     cursor: pointer;
+}
+
+@media screen and (max-width:480px) {
+    .orgSection{
+        padding-top: 100px;
+        position: relative;
+    }
+
+    .orgSection img {
+        right: 35%;
+        top: 5%;
+        
+    }
+
 }

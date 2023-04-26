@@ -13,7 +13,7 @@ const Footer = () => {
                 <img src="/img/instagram.png" alt='instagram' />
             </a>
         </div>
-        <img src='/img/Logo.png' alt='org' />
+        <img className="footer-logo" src='/img/Logo.png' alt='org' />
         <strong>Desarrollado por ColiJD</strong>
     </footer>
 }

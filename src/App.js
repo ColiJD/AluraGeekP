@@ -4,7 +4,7 @@ import Header from './componentes/header/header';
 import Formulario from './componentes/formulario/formulario';
 import MiOrg from './componentes/miOrg';
 import Equipo from './componentes/equipo';
-import Footer from './footer';
+import Footer from './componentes/footer';
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);

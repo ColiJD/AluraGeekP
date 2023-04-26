@@ -16,3 +16,15 @@
     padding: 0px 15px;
 }
 
+@media screen and (max-width:480px) {
+    .footer{
+        flex-direction: column;
+        padding: 5% 0;
+        font-size: 15px;
+    }
+    .footer-logo{
+        display: none;
+    }
+    
+}
+
