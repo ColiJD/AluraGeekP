@@ -1,6 +1,14 @@
 .colaborador{
     width: 280px;
     margin-bottom: 24px;
+    position: relative;
+}
+.eliminar{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: white;
+
 }
 
 .colaborador .encabezado{
