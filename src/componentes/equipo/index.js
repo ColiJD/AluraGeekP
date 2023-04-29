@@ -4,13 +4,13 @@ import hexToRgba from 'hex-to-rgba';
 
 const Equipo = (prosp) => {
     //Destructuracion
-    const { colorPrimario, /*colorSecundario,*/ titulo,id } = prosp.datos;
-    const { colaboradores, eliminarColaborador, actualizarColorEquipo } = prosp;
+    const { colorPrimario, /*colorSecundario,*/ titulo, id } = prosp.datos;
+    const { colaboradores, eliminarColaborador, actualizarColorEquipo, link } = prosp;
 
     const estiloTitulo = { borderColor: colorPrimario };
 
     const estilo = {
-        backgroundColor:hexToRgba(colorPrimario /*colorSecundario*/,0.6) 
+        backgroundColor: hexToRgba(colorPrimario /*colorSecundario*/, 0.6)
     };
 
     /*Componentes ternarios*/
@@ -22,7 +22,7 @@ const Equipo = (prosp) => {
                     type="color"
                     value={colorPrimario /*colorSecundario*/}
                     onChange={(e) => {
-                        actualizarColorEquipo(e.target.value,id)
+                        actualizarColorEquipo(e.target.value, id)
                     }}
                 />
                 <h3 style={estiloTitulo} >{titulo}</h3>
@@ -33,6 +33,7 @@ const Equipo = (prosp) => {
                             key={index}
                             colorPrimario={colorPrimario}
                             eliminarColaborador={eliminarColaborador}
+                            link={link}
 
                         />)
                     }

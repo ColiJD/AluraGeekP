@@ -14,35 +14,40 @@ function App() {
     equipo: "Front End",
     foto: "https://github.com/harlandlohora.png",
     nombre: "Harland Lohora",
-    puesto: "Instructor"
+    puesto: "Instructor",
+    fav: true
   },
   {
     id: uuidv4(),
     equipo: "Programación",
     foto: "https://github.com/genesysaluralatam.png",
     nombre: "Genesys Rondón",
-    puesto: "Desarrolladora de software e instructora"
+    puesto: "Desarrolladora de software e instructora",
+    fav: false
   },
   {
     id: uuidv4(),
     equipo: "UX y Diseño",
     foto: "https://github.com/JeanmarieAluraLatam.png",
     nombre: "Jeanmarie Quijada",
-    puesto: "Instructora en Alura Latam"
+    puesto: "Instructora en Alura Latam",
+    fav: false
   },
   {
     id: uuidv4(),
     equipo: "Programación",
     foto: "https://github.com/christianpva.png",
     nombre: "Christian Velasco",
-    puesto: "Head de Alura e Instructor"
+    puesto: "Head de Alura e Instructor",
+    fav: false
   },
   {
     id: uuidv4(),
     equipo: "Innovación y Gestión",
     foto: "https://github.com/JoseDarioGonzalezCha.png",
     nombre: "Jose Gonzalez",
-    puesto: "Dev FullStack"
+    puesto: "Dev FullStack",
+    fav: false
   }]);
   const [equipos, actualizarEquipos] = useState([
     {
@@ -103,7 +108,7 @@ function App() {
   /*Eliminar Colaborador*/
   const eliminarColaborador = (id) => {
     console.log("Eliminar Colaborador")
-    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !==id)
+    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id)
     actualizarColaboradores(nuevosColaboradores)
   }
 
@@ -119,12 +124,29 @@ function App() {
     actualizarEquipos(equiposActualizados)
   }
 
+  //Crear Equipo
+
+  const crearEquipo = (nuevoEquipo) => {
+    actualizarEquipos([...equipos, { ...nuevoEquipo, id: uuidv4 }])
+  }
+
+  const link = (id) => {
+    const colaboradoresActu = colaboradores.map((colaborador) => {
+      if (colaborador.id === id) {
+        colaborador.fav = !colaborador.fav
+      }
+      return colaborador
+    })
+    actualizarColaboradores(colaboradoresActu)
+  }
+
   /*Se pueden poner solo las llaves despues del formulario para simular algo vacion o se le puede garegar algun div, texto o lo que */
   return (
     <div>
       <Header></Header>
       {mostrarFormulario === true ? <Formulario equipos={equipos.map((equipo) => equipo.titulo)}
         registrarColaborador={registrarColaborador}
+        crearEquipo={crearEquipo}
       /> : <></>}
       <MiOrg cambiarMostrar={cambiarMostrar} />
       {
@@ -133,6 +155,7 @@ function App() {
             colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
             eliminarColaborador={eliminarColaborador}
             actualizarColorEquipo={actualizarColorEquipo}
+            link={link}
           />
         })
       }
